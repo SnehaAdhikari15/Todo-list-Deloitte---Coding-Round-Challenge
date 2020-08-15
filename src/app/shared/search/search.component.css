@@ -1,0 +1,30 @@
+.searchbar-nav{
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+}
+.searchbar-nav .form-group{
+    margin-bottom: 0px;
+    text-align: center;
+}
+.icon-addon {
+    position: relative;
+    color: #555;
+    display: block;
+}
+.icon-addon:after, .icon-addon:before {
+    display: table;
+    content: " ";
+}
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon .form-control:focus + .glyphicon, .icon-addon:hover .glyphicon, .icon-addon .form-control:focus + .fa, .icon-addon:hover .fa {
+    color: #2580db;
+}
+.icon-addon input[placeholder] {
+    text-align: center;
+}
+

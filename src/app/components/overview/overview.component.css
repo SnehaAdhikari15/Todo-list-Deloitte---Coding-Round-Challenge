@@ -1,0 +1,9 @@
+.list-container{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0;
+    border-bottom: 1px solid #dfdfdf;
+}
+.mat-card{
+    background: beige !important;
+}

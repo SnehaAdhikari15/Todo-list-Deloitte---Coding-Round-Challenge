@@ -1,0 +1,45 @@
+.list-container{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0;
+    border-bottom: 1px solid #dfdfdf;
+}
+.list-container div {
+    margin:10px;
+}
+
+.vLineSeperator{
+    border-right: 2px solid;
+    margin: 10px;
+}
+
+.appLinks{
+    position: absolute;
+    right: 0;
+}
+
+.appLinks a{
+    color:black;
+    cursor: pointer;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.task-list{
+    margin: 20px;
+}
+  
+.example-full-width {
+    width: 100%;
+}
+
+.overview{
+    float: right;
+    margin: 10px;
+}
+.mat-card{
+    background: beige !important;
+}

@@ -1,0 +1,73 @@
+<div>
+  <mat-card>
+    <mat-card-title>To Do List:</mat-card-title>
+    <mat-card-content>
+      <mat-card>
+        <mat-card-title>Add Task:</mat-card-title>
+        <mat-card-content>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Task Title</mat-label>
+              <input matInput placeholder="Enter title" [(ngModel)]="taskTitle" name="taskTitle">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Task's Details</mat-label>
+              <textarea matInput placeholder="Enter details" [(ngModel)]="taskDetails" name="taskDetails"></textarea>
+            </mat-form-field>
+          </form>
+          <button mat-button color="primary" (click)="addTask()">Add</button>
+        </mat-card-content>
+      </mat-card>
+      <div class="task-list">
+        <mat-card>
+          <mat-card-title>Your Pending Tasks Are: </mat-card-title>
+          <mat-card-content>
+            <div class="overview">
+              <div class="btn btn-primary" (click)="navigateToOverview()">Go to Overview</div>
+            </div>
+            <app-search [searchText]="searchText" (searchEvent)="onChangeValue($event)"></app-search>
+            <div class="list-container" *ngFor="let items of todoList | filter : searchText |paginate: { itemsPerPage: 3, currentPage: p }">
+              <div>
+                <b>Title:</b><p>{{items.title}}</p>
+                <b>Details:</b><p>{{items.text}}</p>
+              </div>
+              <div class="appLinks">
+                <a class="editApp" title="{{'EDIT_APP'}}" (click)="open(mymodal,items)">
+                  <i class="material-icons">create</i>{{todoConst.edit}}
+                </a>
+                <span class="vLineSeperator"></span>
+                <a class="deleteApp" title="{{'DELETE_APP'}}" (click)="deleteTask($event,items)">
+                  <i class="material-icons">delete</i>{{todoConst.delete}}
+                </a>
+              </div>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit Task</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Task Title</mat-label>
+          <input matInput placeholder="Enter title" [(ngModel)]="edittaskTitle" name="taskTitle">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Task's Details</mat-label>
+          <textarea matInput placeholder="Enter details" [(ngModel)]="edittaskDetails" name="taskDetails"></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="saveEdit(); modal.close()">Save</button>
+    </div>
+  </ng-template>
+</div>

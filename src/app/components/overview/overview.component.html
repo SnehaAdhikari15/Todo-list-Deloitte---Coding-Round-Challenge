@@ -1,0 +1,18 @@
+<div class="task-list">
+  <mat-card>
+    <mat-card-title>Your Pending Tasks Are: </mat-card-title>
+    <mat-card-content>
+      <div class="back-button">
+        <div class="btn btn-primary" (click)="navigateToEdit()">Back</div>
+      </div>
+      <app-search [searchText]="searchText" (searchEvent)="onChangeValue($event)"></app-search>
+      <div class="list-container" *ngFor="let items of todoList | filter : searchText | paginate: { itemsPerPage: 3, currentPage: p }">
+        <div>
+          <b>Title:</b><p>{{items.title}}</p>
+          <b>Details:</b><p>{{items.text}}</p>
+        </div>
+      </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </mat-card-content>
+  </mat-card>
+</div>
